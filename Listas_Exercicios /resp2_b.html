@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lan House JS</title>
+</head>
+<body>
+    <h1>Lan House JS</h1>
+
+    <p>
+        Valor por 15min de Uso R$: <input type="text" id="inValor">
+    </p>
+    <p>
+        Tempo de Uso do Cliente: <input type="text" id="inTempo">
+    </p>
+    <p>
+        <input type="button" value="Calcular Valor a Pagar" id="btCalcular">
+    </p>
+
+    <h3 id="outValorPagar"></h3>
+
+    <script>
+        const btCalcular = document.getElementById("btCalcular");
+        const inValor = document.getElementById("inValor");
+        const inTempo = document.getElementById("inTempo");
+        const outValorPagar = document.getElementById("outValorPagar");
+
+        btCalcular.addEventListener("click", () => {
+            const valorPor15Min = Number(inValor.value);
+            const tempoUso = Number(inTempo.value);
+
+            // Usa Math.ceil para arredondar para cima e cobrar as frações de forma integral
+            const blocos = Math.ceil(tempoUso / 15);
+            const valorPagar = blocos * valorPor15Min;
+
+            outValorPagar.innerText = "Valor a Pagar R$: " + valorPagar.toFixed(2);
+        });
+    </script>
+</body>
+</html>
